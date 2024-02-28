@@ -30,7 +30,8 @@ namespace Steam_Desktop_Authenticator
 
                 if (this.LoginReason == LoginType.Refresh)
                 {
-                    labelLoginExplanation.Text = "Your Steam credentials have expired. For trade and market confirmations to work properly, please login again.";
+                    labelLoginExplanation.Text =
+                        "Your Steam credentials have expired. For trade and market confirmations to work properly, please login again.";
                 }
                 else if (this.LoginReason == LoginType.Import)
                 {
@@ -39,7 +40,11 @@ namespace Steam_Desktop_Authenticator
             }
             catch (Exception)
             {
-                MessageBox.Show("Failed to find your account. Try closing and re-opening SDA.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Failed to find your account. Try closing and re-opening SDA.",
+                    "Login Failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 this.Close();
             }
         }
@@ -90,15 +95,16 @@ namespace Steam_Desktop_Authenticator
             CredentialsAuthSession authSession;
             try
             {
-                authSession = await steamClient.Authentication.BeginAuthSessionViaCredentialsAsync(new AuthSessionDetails
-                {
-                    Username = username,
-                    Password = password,
-                    IsPersistentSession = false,
-                    PlatformType = EAuthTokenPlatformType.k_EAuthTokenPlatformType_MobileApp,
-                    ClientOSType = EOSType.Android9,
-                    Authenticator = new UserFormAuthenticator(this.account),
-                });
+                authSession = await steamClient.Authentication.BeginAuthSessionViaCredentialsAsync(
+                    new AuthSessionDetails
+                    {
+                        Username = username,
+                        Password = password,
+                        IsPersistentSession = false,
+                        PlatformType = EAuthTokenPlatformType.k_EAuthTokenPlatformType_MobileApp,
+                        ClientOSType = EOSType.Android9,
+                        Authenticator = new UserFormAuthenticator(this.account),
+                    });
             }
             catch (Exception ex)
             {
@@ -144,13 +150,17 @@ namespace Steam_Desktop_Authenticator
                 Manifest man = Manifest.GetManifest();
                 account.FullyEnrolled = true;
                 account.Session = sessionData;
-                HandleManifest(man, true);
+                HandleManifest(man, account, true);
                 this.Close();
                 return;
             }
 
             // Show a dialog to make sure they really want to add their authenticator
-            var result = MessageBox.Show("Steam account login succeeded. Press OK to continue adding SDA as your authenticator.", "Steam Login", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var result = MessageBox.Show(
+                "Steam account login succeeded. Press OK to continue adding SDA as your authenticator.",
+                "Steam Login",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
             {
                 MessageBox.Show("Adding authenticator aborted.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,12 +203,20 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case AuthenticatorLinker.LinkResult.AuthenticatorPresent:
-                        MessageBox.Show("This account already has an authenticator linked. You must remove that authenticator to add SDA as your authenticator.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            "This account already has an authenticator linked. You must remove that authenticator to add SDA as your authenticator.",
+                            "Steam Login",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         this.Close();
                         return;
 
                     case AuthenticatorLinker.LinkResult.FailureAddingPhone:
-                        MessageBox.Show("Failed to add your phone number. Please try again or use a different phone number.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            "Failed to add your phone number. Please try again or use a different phone number.",
+                            "Steam Login",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         linker.PhoneNumber = null;
                         break;
 
@@ -207,7 +225,11 @@ namespace Steam_Desktop_Authenticator
                         break;
 
                     case AuthenticatorLinker.LinkResult.MustConfirmEmail:
-                        MessageBox.Show("Please check your email, and click the link Steam sent you before continuing.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(
+                            "Please check your email, and click the link Steam sent you before continuing.",
+                            "Steam Login",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                         break;
 
                     case AuthenticatorLinker.LinkResult.GeneralFailure:
@@ -221,7 +243,8 @@ namespace Steam_Desktop_Authenticator
             string passKey = null;
             if (manifest.Entries.Count == 0)
             {
-                passKey = manifest.PromptSetupPassKey("Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
+                passKey = manifest.PromptSetupPassKey(
+                    "Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
             }
             else if (manifest.Entries.Count > 0 && manifest.Encrypted)
             {
@@ -256,7 +279,9 @@ namespace Steam_Desktop_Authenticator
                 return;
             }
 
-            MessageBox.Show("The Mobile Authenticator has not yet been linked. Before finalizing the authenticator, please write down your revocation code: " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show(
+                "The Mobile Authenticator has not yet been linked. Before finalizing the authenticator, please write down your revocation code: " +
+                linker.LinkedAccount.RevocationCode);
 
             AuthenticatorLinker.FinalizeResult finalizeResponse = AuthenticatorLinker.FinalizeResult.GeneralFailure;
             while (finalizeResponse != AuthenticatorLinker.FinalizeResult.Success)
@@ -289,13 +314,17 @@ namespace Steam_Desktop_Authenticator
                         continue;
 
                     case AuthenticatorLinker.FinalizeResult.UnableToGenerateCorrectCodes:
-                        MessageBox.Show("Unable to generate the proper codes to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show(
+                            "Unable to generate the proper codes to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " +
+                            linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
 
                     case AuthenticatorLinker.FinalizeResult.GeneralFailure:
-                        MessageBox.Show("Unable to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show(
+                            "Unable to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: " +
+                            linker.LinkedAccount.RevocationCode);
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
@@ -304,16 +333,18 @@ namespace Steam_Desktop_Authenticator
 
             //Linked, finally. Re-save with FullyEnrolled property.
             manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey);
-            MessageBox.Show("Mobile authenticator successfully linked. Please write down your revocation code: " + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show(
+                "Mobile authenticator successfully linked. Please write down your revocation code: " + linker.LinkedAccount.RevocationCode);
             this.Close();
         }
 
-        private void HandleManifest(Manifest man, bool IsRefreshing = false)
+        public static void HandleManifest(Manifest man, SteamGuardAccount account, bool IsRefreshing = false, bool silent = false)
         {
             string passKey = null;
             if (man.Entries.Count == 0)
             {
-                passKey = man.PromptSetupPassKey("Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
+                passKey = man.PromptSetupPassKey(
+                    "Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
             }
             else if (man.Entries.Count > 0 && man.Encrypted)
             {
@@ -328,12 +359,15 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = man.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show("That passkey is invalid. Please enter the same passkey you used for your other accounts.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(
+                                "That passkey is invalid. Please enter the same passkey you used for your other accounts.",
+                                "Steam Login",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        this.Close();
                         return;
                     }
                 }
@@ -342,13 +376,18 @@ namespace Steam_Desktop_Authenticator
             man.SaveAccount(account, passKey != null, passKey);
             if (IsRefreshing)
             {
-                MessageBox.Show("Your session was refreshed.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!silent)
+                {
+                    MessageBox.Show("Your session was refreshed.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                MessageBox.Show("Mobile authenticator successfully linked. Please write down your revocation code: " + account.RevocationCode, "Steam Login", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "Mobile authenticator successfully linked. Please write down your revocation code: " + account.RevocationCode,
+                    "Steam Login",
+                    MessageBoxButtons.OK);
             }
-            this.Close();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

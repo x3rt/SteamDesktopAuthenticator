@@ -54,6 +54,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRemoveAccountFromManifest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeactivateAuthenticator = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSetApiKey = new System.Windows.Forms.ToolStripMenuItem();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStripTray = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trayRestore = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +75,7 @@
             this.menuStripTray.SuspendLayout();
             this.panelButtons.SuspendLayout();
             this.SuspendLayout();
+
             // 
             // btnSteamLogin
             // 
@@ -84,11 +86,11 @@
             this.btnSteamLogin.Text = "Setup New Account";
             this.btnSteamLogin.UseVisualStyleBackColor = true;
             this.btnSteamLogin.Click += new System.EventHandler(this.btnSteamLogin_Click);
+
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnCopy);
             this.groupBox1.Controls.Add(this.pbTimeout);
             this.groupBox1.Controls.Add(this.txtLoginToken);
@@ -98,6 +100,7 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login Token";
+
             // 
             // btnCopy
             // 
@@ -109,22 +112,22 @@
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+
             // 
             // pbTimeout
             // 
-            this.pbTimeout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbTimeout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.pbTimeout.Location = new System.Drawing.Point(6, 60);
             this.pbTimeout.Maximum = 30;
             this.pbTimeout.Name = "pbTimeout";
             this.pbTimeout.Size = new System.Drawing.Size(298, 19);
             this.pbTimeout.TabIndex = 1;
             this.pbTimeout.Value = 30;
+
             // 
             // txtLoginToken
             // 
-            this.txtLoginToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLoginToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLoginToken.BackColor = System.Drawing.SystemColors.Window;
             this.txtLoginToken.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoginToken.Location = new System.Drawing.Point(6, 19);
@@ -133,12 +136,11 @@
             this.txtLoginToken.Size = new System.Drawing.Size(238, 35);
             this.txtLoginToken.TabIndex = 0;
             this.txtLoginToken.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
             // 
             // listAccounts
             // 
-            this.listAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.listAccounts.FormattingEnabled = true;
             this.listAccounts.Location = new System.Drawing.Point(12, 217);
             this.listAccounts.Name = "listAccounts";
@@ -146,12 +148,14 @@
             this.listAccounts.TabIndex = 3;
             this.listAccounts.SelectedValueChanged += new System.EventHandler(this.listAccounts_SelectedValueChanged);
             this.listAccounts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listAccounts_KeyDown);
+
             // 
             // timerSteamGuard
             // 
             this.timerSteamGuard.Enabled = true;
             this.timerSteamGuard.Interval = 1000;
             this.timerSteamGuard.Tick += new System.EventHandler(this.timerSteamGuard_Tick);
+
             // 
             // btnTradeConfirmations
             // 
@@ -164,6 +168,7 @@
             this.btnTradeConfirmations.Text = "View Confirmations";
             this.btnTradeConfirmations.UseVisualStyleBackColor = true;
             this.btnTradeConfirmations.Click += new System.EventHandler(this.btnTradeConfirmations_Click);
+
             // 
             // btnManageEncryption
             // 
@@ -175,11 +180,11 @@
             this.btnManageEncryption.Text = "Manage Encryption";
             this.btnManageEncryption.UseVisualStyleBackColor = true;
             this.btnManageEncryption.Click += new System.EventHandler(this.btnManageEncryption_Click);
+
             // 
             // groupAccount
             // 
-            this.groupAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.groupAccount.Controls.Add(this.btnTradeConfirmations);
             this.groupAccount.Location = new System.Drawing.Point(12, 155);
             this.groupAccount.Name = "groupAccount";
@@ -187,6 +192,7 @@
             this.groupAccount.TabIndex = 7;
             this.groupAccount.TabStop = false;
             this.groupAccount.Text = "Account";
+
             // 
             // labelVersion
             // 
@@ -201,6 +207,7 @@
             this.labelVersion.TabIndex = 8;
             this.labelVersion.Text = "v0.0.0";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+
             // 
             // labelUpdate
             // 
@@ -217,29 +224,26 @@
             this.labelUpdate.Text = "Check for updates";
             this.labelUpdate.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.labelUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelUpdate_LinkClicked);
+
             // 
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.accountToolStripMenuItem});
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.fileToolStripMenuItem, this.accountToolStripMenuItem });
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(334, 24);
             this.menuStrip.TabIndex = 10;
             this.menuStrip.Text = "menuStrip1";
+
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuImportAccount,
-            this.toolStripSeparator1,
-            this.menuSettings,
-            this.menuQuit});
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.menuImportAccount, this.toolStripSeparator1, this.menuSettings, this.menuQuit });
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+
             // 
             // menuImportAccount
             // 
@@ -247,11 +251,13 @@
             this.menuImportAccount.Size = new System.Drawing.Size(158, 22);
             this.menuImportAccount.Text = "Import Account";
             this.menuImportAccount.Click += new System.EventHandler(this.menuImportAccount_Click);
+
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(155, 6);
+
             // 
             // menuSettings
             // 
@@ -259,6 +265,7 @@
             this.menuSettings.Size = new System.Drawing.Size(158, 22);
             this.menuSettings.Text = "Settings";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
+
             // 
             // menuQuit
             // 
@@ -266,17 +273,15 @@
             this.menuQuit.Size = new System.Drawing.Size(158, 22);
             this.menuQuit.Text = "Quit";
             this.menuQuit.Click += new System.EventHandler(this.menuQuit_Click);
+
             // 
             // accountToolStripMenuItem
             // 
-            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuLoginAgain,
-            this.toolStripSeparator4,
-            this.menuRemoveAccountFromManifest,
-            this.menuDeactivateAuthenticator});
+            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.menuLoginAgain, this.toolStripSeparator4, this.menuRemoveAccountFromManifest, this.menuDeactivateAuthenticator, this.menuSetApiKey });
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.accountToolStripMenuItem.Text = "Selected Account";
+
             // 
             // menuLoginAgain
             // 
@@ -284,11 +289,13 @@
             this.menuLoginAgain.Size = new System.Drawing.Size(205, 22);
             this.menuLoginAgain.Text = "Login again";
             this.menuLoginAgain.Click += new System.EventHandler(this.menuLoginAgain_Click);
+
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(202, 6);
+
             // 
             // menuRemoveAccountFromManifest
             // 
@@ -296,6 +303,7 @@
             this.menuRemoveAccountFromManifest.Size = new System.Drawing.Size(205, 22);
             this.menuRemoveAccountFromManifest.Text = "Remove from manifest";
             this.menuRemoveAccountFromManifest.Click += new System.EventHandler(this.menuRemoveAccountFromManifest_Click);
+
             // 
             // menuDeactivateAuthenticator
             // 
@@ -303,6 +311,15 @@
             this.menuDeactivateAuthenticator.Size = new System.Drawing.Size(205, 22);
             this.menuDeactivateAuthenticator.Text = "Deactivate Authenticator";
             this.menuDeactivateAuthenticator.Click += new System.EventHandler(this.menuDeactivateAuthenticator_Click);
+
+            // 
+            // menuSetApiKey
+            // 
+            this.menuSetApiKey.Name = "menuSetApiKey";
+            this.menuSetApiKey.Size = new System.Drawing.Size(205, 22);
+            this.menuSetApiKey.Text = "Set API Key";
+            this.menuSetApiKey.Click += new System.EventHandler(this.menuSetApiKey_Click);
+
             // 
             // trayIcon
             // 
@@ -310,19 +327,14 @@
             this.trayIcon.Text = "Steam Desktop Authenticator";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
+
             // 
             // menuStripTray
             // 
-            this.menuStripTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trayRestore,
-            this.toolStripSeparator2,
-            this.trayAccountList,
-            this.trayTradeConfirmations,
-            this.trayCopySteamGuard,
-            this.toolStripSeparator3,
-            this.trayQuit});
+            this.menuStripTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.trayRestore, this.toolStripSeparator2, this.trayAccountList, this.trayTradeConfirmations, this.trayCopySteamGuard, this.toolStripSeparator3, this.trayQuit });
             this.menuStripTray.Name = "contextMenuStripTray";
             this.menuStripTray.Size = new System.Drawing.Size(216, 131);
+
             // 
             // trayRestore
             // 
@@ -330,21 +342,22 @@
             this.trayRestore.Size = new System.Drawing.Size(215, 22);
             this.trayRestore.Text = "Restore";
             this.trayRestore.Click += new System.EventHandler(this.trayRestore_Click);
+
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
+
             // 
             // trayAccountList
             // 
             this.trayAccountList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trayAccountList.Items.AddRange(new object[] {
-            "test1",
-            "test2"});
+            this.trayAccountList.Items.AddRange(new object[] { "test1", "test2" });
             this.trayAccountList.Name = "trayAccountList";
             this.trayAccountList.Size = new System.Drawing.Size(121, 23);
             this.trayAccountList.SelectedIndexChanged += new System.EventHandler(this.trayAccountList_SelectedIndexChanged);
+
             // 
             // trayTradeConfirmations
             // 
@@ -352,6 +365,7 @@
             this.trayTradeConfirmations.Size = new System.Drawing.Size(215, 22);
             this.trayTradeConfirmations.Text = "Trade Confirmations";
             this.trayTradeConfirmations.Click += new System.EventHandler(this.trayTradeConfirmations_Click);
+
             // 
             // trayCopySteamGuard
             // 
@@ -359,11 +373,13 @@
             this.trayCopySteamGuard.Size = new System.Drawing.Size(215, 22);
             this.trayCopySteamGuard.Text = "Copy SG code to clipboard";
             this.trayCopySteamGuard.Click += new System.EventHandler(this.trayCopySteamGuard_Click);
+
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(212, 6);
+
             // 
             // trayQuit
             // 
@@ -371,12 +387,14 @@
             this.trayQuit.Size = new System.Drawing.Size(215, 22);
             this.trayQuit.Text = "Quit";
             this.trayQuit.Click += new System.EventHandler(this.trayQuit_Click);
+
             // 
             // timerTradesPopup
             // 
             this.timerTradesPopup.Enabled = true;
             this.timerTradesPopup.Interval = 5000;
             this.timerTradesPopup.Tick += new System.EventHandler(this.timerTradesPopup_Tick);
+
             // 
             // lblStatus
             // 
@@ -388,16 +406,17 @@
             this.lblStatus.Size = new System.Drawing.Size(163, 18);
             this.lblStatus.TabIndex = 11;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+
             // 
             // txtAccSearch
             // 
-            this.txtAccSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAccSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAccSearch.Location = new System.Drawing.Point(49, 411);
             this.txtAccSearch.Name = "txtAccSearch";
             this.txtAccSearch.Size = new System.Drawing.Size(273, 22);
             this.txtAccSearch.TabIndex = 12;
             this.txtAccSearch.TextChanged += new System.EventHandler(this.txtAccSearch_TextChanged);
+
             // 
             // label1
             // 
@@ -408,11 +427,11 @@
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "Filter:";
+
             // 
             // panelButtons
             // 
-            this.panelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtons.BackColor = System.Drawing.Color.Transparent;
             this.panelButtons.Controls.Add(this.btnSteamLogin);
             this.panelButtons.Controls.Add(this.btnManageEncryption);
@@ -421,6 +440,7 @@
             this.panelButtons.Size = new System.Drawing.Size(310, 30);
             this.panelButtons.TabIndex = 14;
             this.panelButtons.SizeChanged += new System.EventHandler(this.panelButtons_SizeChanged);
+
             // 
             // MainForm
             // 
@@ -461,8 +481,9 @@
             this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.ToolStripMenuItem menuSetApiKey;
 
         #endregion
         private System.Windows.Forms.Button btnSteamLogin;

@@ -7,6 +7,9 @@ using System.Drawing.Drawing2D;
 
 namespace Steam_Desktop_Authenticator
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public partial class ConfirmationFormWeb : Form
     {
         private SteamGuardAccount steamAccount;
@@ -17,6 +20,7 @@ namespace Steam_Desktop_Authenticator
             this.steamAccount = steamAccount;
             this.Text = String.Format("Trade Confirmations - {0}", steamAccount.AccountName);
         }
+
         private async Task LoadData()
         {
             this.splitContainer1.Panel2.Controls.Clear();
@@ -24,7 +28,11 @@ namespace Steam_Desktop_Authenticator
             // Check for a valid refresh token first
             if (steamAccount.Session.IsRefreshTokenExpired())
             {
-                MessageBox.Show("Your session has expired. Use the login again button under the selected account menu.", "Trade Confirmations", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Your session has expired. Use the login again button under the selected account menu.",
+                    "Trade Confirmations",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -50,11 +58,18 @@ namespace Steam_Desktop_Authenticator
 
                 if (confirmations == null || confirmations.Length == 0)
                 {
-                    Label errorLabel = new Label() { Text = "Nothing to confirm/cancel", AutoSize = true, ForeColor = Color.Black, Location = new Point(150, 20) };
+                    Label errorLabel = new Label()
+                    {
+                        Text = "Nothing to confirm/cancel",
+                        AutoSize = true, ForeColor = Color.Black,
+                        Location = new Point(150, 20),
+                    };
                     this.splitContainer1.Panel2.Controls.Add(errorLabel);
                 }
 
-                foreach (var confirmation in confirmations)
+                List<TradeOffer> trades = await steamAccount.FetchTradesAsync();
+
+                foreach (Confirmation confirmation in confirmations)
                 {
                     Panel panel = new Panel() { Dock = DockStyle.Top, Height = 120 };
                     panel.Paint += (s, e) =>
@@ -64,12 +79,13 @@ namespace Steam_Desktop_Authenticator
                             e.Graphics.FillRectangle(brush, panel.ClientRectangle);
                         }
                     };
-                    
+
+                    PictureBox pictureBox = new PictureBox()
+                        { Width = 60, Height = 60, Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
                     if (!string.IsNullOrEmpty(confirmation.Icon))
                     {
-                       PictureBox pictureBox = new PictureBox() { Width = 60, Height = 60, Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
-                       pictureBox.Load(confirmation.Icon);
-                       panel.Controls.Add(pictureBox);
+                        pictureBox.Load(confirmation.Icon);
+                        panel.Controls.Add(pictureBox);
                     }
 
                     Label nameLabel = new Label()
@@ -119,11 +135,29 @@ namespace Steam_Desktop_Authenticator
                     panel.Controls.Add(summaryLabel);
 
                     this.splitContainer1.Panel2.Controls.Add(panel);
+
+                    if (confirmation.ConfType == Confirmation.EMobileConfirmationType.Trade && trades != null)
+                    {
+                        TradeOffer trade = trades.FirstOrDefault(t => t.TradeOfferId == confirmation.Creator);
+                        if (trade != null)
+                        {
+                            pictureBox.Click += (s, e) =>
+                            {
+                                System.Diagnostics.Process.Start($"https://steamcommunity.com/profiles/{trade.SteamId}");
+                            };
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Label errorLabel = new Label() { Text = "Something went wrong:\n" + ex.Message, AutoSize = true, ForeColor = Color.Red, Location = new Point(20, 20) };
+                Label errorLabel = new Label()
+                {
+                    Text = "Something went wrong:\n" + ex.Message,
+                    AutoSize = true,
+                    ForeColor = Color.Red,
+                    Location = new Point(20, 20),
+                };
                 this.splitContainer1.Panel2.Controls.Add(errorLabel);
             }
         }
@@ -145,7 +179,6 @@ namespace Steam_Desktop_Authenticator
 
             await this.LoadData();
         }
-
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
