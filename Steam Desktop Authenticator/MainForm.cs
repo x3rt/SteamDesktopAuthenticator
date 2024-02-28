@@ -776,7 +776,7 @@ namespace Steam_Desktop_Authenticator
                 MessageBox.Show("Invalid API Key");
                 return;
             }
-            
+
             if (apiKey == currentAccount.ApiKey)
             {
                 return;
@@ -784,8 +784,35 @@ namespace Steam_Desktop_Authenticator
 
             currentAccount.ApiKey = apiKey;
 
-            Manifest man = Manifest.GetManifest();
-            LoginForm.HandleManifest(man, currentAccount, true, true);
+            if (manifest.Encrypted)
+            {
+                bool passKeyValid = manifest.VerifyPasskey(passKey);
+                while (!passKeyValid)
+                {
+                    InputForm passKeyForm = new InputForm("Please enter your current encryption passkey to save your API Key", true);
+                    passKeyForm.ShowDialog();
+                    if (!passKeyForm.Canceled)
+                    {
+                        passKey = passKeyForm.txtBox.Text;
+                        passKeyValid = manifest.VerifyPasskey(passKey);
+                        if (!passKeyValid)
+                        {
+                            MessageBox.Show("That passkey is invalid. Please enter the same passkey you used for your other accounts.");
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (!manifest.SaveAccount(currentAccount, manifest.Encrypted, passKey))
+            {
+                MessageBox.Show("Unable to save API Key");
+                return;
+            }
+
             MessageBox.Show(string.IsNullOrEmpty(apiKey) ? "Cleared API Key" : "API Key set");
         }
     }
