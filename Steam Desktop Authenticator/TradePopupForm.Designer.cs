@@ -34,6 +34,7 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblAccount = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // lblDesc
@@ -89,6 +90,13 @@
             this.lblAccount.TabIndex = 4;
             this.lblAccount.Text = "account name";
             this.lblAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // toolTip1
+            //
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 50;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.ShowAlways = true;
             // 
             // TradePopupForm
             // 
@@ -117,5 +125,6 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

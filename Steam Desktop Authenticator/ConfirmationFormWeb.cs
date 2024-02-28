@@ -135,7 +135,6 @@ namespace Steam_Desktop_Authenticator
                     panel.Controls.Add(summaryLabel);
 
                     this.splitContainer1.Panel2.Controls.Add(panel);
-
                     if (confirmation.ConfType == Confirmation.EMobileConfirmationType.Trade && trades != null)
                     {
                         TradeOffer trade = trades.FirstOrDefault(t => t.TradeOfferId == confirmation.Creator);
