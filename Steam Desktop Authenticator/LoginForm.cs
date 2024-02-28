@@ -150,7 +150,7 @@ namespace Steam_Desktop_Authenticator
                 Manifest man = Manifest.GetManifest();
                 account.FullyEnrolled = true;
                 account.Session = sessionData;
-                HandleManifest(man, account, true);
+                HandleManifest(man, true);
                 this.Close();
                 return;
             }
@@ -338,13 +338,12 @@ namespace Steam_Desktop_Authenticator
             this.Close();
         }
 
-        public static void HandleManifest(Manifest man, SteamGuardAccount account, bool IsRefreshing = false, bool silent = false)
+        private void HandleManifest(Manifest man, bool IsRefreshing = false)
         {
             string passKey = null;
             if (man.Entries.Count == 0)
             {
-                passKey = man.PromptSetupPassKey(
-                    "Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
+                passKey = man.PromptSetupPassKey("Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).");
             }
             else if (man.Entries.Count > 0 && man.Encrypted)
             {
@@ -359,15 +358,12 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = man.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show(
-                                "That passkey is invalid. Please enter the same passkey you used for your other accounts.",
-                                "Steam Login",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                            MessageBox.Show("That passkey is invalid. Please enter the same passkey you used for your other accounts.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
+                        this.Close();
                         return;
                     }
                 }
@@ -376,18 +372,13 @@ namespace Steam_Desktop_Authenticator
             man.SaveAccount(account, passKey != null, passKey);
             if (IsRefreshing)
             {
-                if (!silent)
-                {
-                    MessageBox.Show("Your session was refreshed.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessageBox.Show("Your session was refreshed.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(
-                    "Mobile authenticator successfully linked. Please write down your revocation code: " + account.RevocationCode,
-                    "Steam Login",
-                    MessageBoxButtons.OK);
+                MessageBox.Show("Mobile authenticator successfully linked. Please write down your revocation code: " + account.RevocationCode, "Steam Login", MessageBoxButtons.OK);
             }
+            this.Close();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
