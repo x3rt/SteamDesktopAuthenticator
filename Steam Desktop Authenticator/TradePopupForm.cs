@@ -13,8 +13,8 @@ namespace Steam_Desktop_Authenticator
 {
     public partial class TradePopupForm : Form
     {
-        private SteamGuardAccount acc;
-        private List<Confirmation> confirms = new List<Confirmation>();
+        private Confirmation currentConfirmation;
+        private SteamGuardAccount currentAccount;
         private bool deny2, accept2;
 
         public TradePopupForm()
@@ -23,17 +23,7 @@ namespace Steam_Desktop_Authenticator
             lblStatus.Text = "";
         }
 
-        public SteamGuardAccount Account
-        {
-            get { return acc; }
-            set { acc = value; lblAccount.Text = acc.AccountName; }
-        }
-
-        public Confirmation[] Confirmations
-        {
-            get { return confirms.ToArray(); }
-            set { confirms = new List<Confirmation>(value); }
-        }
+        public SortedDictionary<SteamGuardAccount, List<Confirmation>> Confirmations { get; set; }
 
         private void TradePopupForm_Load(object sender, EventArgs e)
         {
@@ -52,8 +42,8 @@ namespace Steam_Desktop_Authenticator
             else
             {
                 lblStatus.Text = "Accepting...";
-                acc.AcceptConfirmation(confirms[0]);
-                confirms.RemoveAt(0);
+                currentAccount.AcceptConfirmation(currentConfirmation);
+                Confirmations[currentAccount].Remove(currentConfirmation);
                 Reset();
             }
         }
@@ -69,14 +59,23 @@ namespace Steam_Desktop_Authenticator
             else
             {
                 lblStatus.Text = "Denying...";
-                acc.DenyConfirmation(confirms[0]);
-                confirms.RemoveAt(0);
+                currentAccount.DenyConfirmation(currentConfirmation);
+                Confirmations[currentAccount].Remove(currentConfirmation);
                 Reset();
             }
         }
 
         private void Reset()
         {
+            KeyValuePair<SteamGuardAccount, List<Confirmation>> a = Confirmations.FirstOrDefault();
+            if (a.Key == null)
+            {
+                this.Hide();
+                return;
+            }
+            currentAccount = a.Key;
+            currentConfirmation = a.Value.First();
+            
             deny2 = false;
             accept2 = false;
             btnAccept.BackColor = Color.FromArgb(192, 255, 192);
@@ -84,17 +83,19 @@ namespace Steam_Desktop_Authenticator
 
             btnAccept.Text = "Accept";
             btnDeny.Text = "Deny";
-            lblAccount.Text = "";
+            lblAccount.Text = currentAccount.AccountName;
             lblStatus.Text = "";
 
-            if (confirms.Count == 0)
+            if (Confirmations.Count == 0)
             {
                 this.Hide();
             }
             else
             {
                 //TODO: Re-add confirmation description support to SteamAuth.
-                lblDesc.Text = "Confirmation";
+                lblDesc.Text = $"{currentConfirmation.ConfType} Confirmation\n{currentConfirmation.Headline}";
+                string summary = string.Join("\n", currentConfirmation.Summary);
+                toolTip1.SetToolTip(lblDesc, summary);
             }
         }
 

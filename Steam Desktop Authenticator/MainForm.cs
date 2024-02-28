@@ -451,7 +451,8 @@ namespace Steam_Desktop_Authenticator
                 return; //Only one thread may access this critical section at once. Mutex is a bad choice here because it'll cause a pileup of threads.
             }
 
-            List<Confirmation> confs = new List<Confirmation>();
+            SortedDictionary<SteamGuardAccount, List<Confirmation>>
+                confirmations = new SortedDictionary<SteamGuardAccount, List<Confirmation>>();
             Dictionary<SteamGuardAccount, List<Confirmation>> autoAcceptConfirmations = new Dictionary<SteamGuardAccount, List<Confirmation>>();
 
             SteamGuardAccount[] accs = manifest.CheckAllAccounts ? allAccounts : new SteamGuardAccount[] { currentAccount };
@@ -504,7 +505,14 @@ namespace Steam_Desktop_Authenticator
                                 autoAcceptConfirmations[acc].Add(conf);
                             }
                             else
-                                confs.Add(conf);
+                            {
+                                if (!confirmations.ContainsKey(acc))
+                                {
+                                    confirmations[acc] = new List<Confirmation>();
+                                }
+
+                                confirmations[acc].Add(conf);
+                            }
                         }
                     }
                     catch (Exception)
@@ -514,18 +522,17 @@ namespace Steam_Desktop_Authenticator
 
                 lblStatus.Text = "";
 
-                if (confs.Count > 0)
+                if (confirmations.Count > 0)
                 {
-                    popupFrm.Confirmations = confs.ToArray();
+                    popupFrm.Confirmations = confirmations;
                     popupFrm.Popup();
                 }
 
                 if (autoAcceptConfirmations.Count > 0)
                 {
-                    foreach (var acc in autoAcceptConfirmations.Keys)
+                    foreach (SteamGuardAccount account in autoAcceptConfirmations.Keys)
                     {
-                        var confirmations = autoAcceptConfirmations[acc].ToArray();
-                        await acc.AcceptMultipleConfirmations(confirmations);
+                        await account.AcceptMultipleConfirmations(autoAcceptConfirmations[account]);
                     }
                 }
             }
@@ -564,7 +571,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (currentAccount != null && steamTime != 0)
             {
-                popupFrm.Account = currentAccount;
+                // popupFrm.Account = currentAccount;
                 txtLoginToken.Text = currentAccount.GenerateSteamGuardCodeForTime(steamTime);
                 groupAccount.Text = "Account: " + currentAccount.AccountName;
             }
