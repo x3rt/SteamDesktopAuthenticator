@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Wisej.Web;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -27,7 +27,7 @@ namespace Steam_Desktop_Authenticator
 
         private void TradePopupForm_Load(object sender, EventArgs e)
         {
-            this.Location = (Point)Size.Subtract(Screen.GetWorkingArea(this).Size, this.Size);
+            this.Location = (Point)Size.Subtract(Screen.WorkingArea.Size, this.Size);
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnImportConfig = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnJustStart = new System.Windows.Forms.Button();
+            this.label1 = new Wisej.Web.Label();
+            this.btnImportConfig = new Wisej.Web.Button();
+            this.label2 = new Wisej.Web.Label();
+            this.btnJustStart = new Wisej.Web.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +54,6 @@
             this.btnImportConfig.TabIndex = 1;
             this.btnImportConfig.Text = "I already setup Steam Desktop Authenticator in another location on this PC and I " +
     "want to import its account(s).\r\n";
-            this.btnImportConfig.UseVisualStyleBackColor = true;
             this.btnImportConfig.Click += new System.EventHandler(this.btnImportConfig_Click);
             // 
             // label2
@@ -75,24 +74,22 @@
             this.btnJustStart.Size = new System.Drawing.Size(366, 52);
             this.btnJustStart.TabIndex = 4;
             this.btnJustStart.Text = "This is my first time and \r\nI just want to sign into my Steam Account(s).";
-            this.btnJustStart.UseVisualStyleBackColor = true;
             this.btnJustStart.Click += new System.EventHandler(this.btnJustStart_Click);
             // 
             // WelcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 255);
             this.Controls.Add(this.btnJustStart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnImportConfig);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = Wisej.Web.FormBorderStyle.Fixed;
             this.MaximizeBox = false;
             this.Name = "WelcomeForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = Wisej.Web.FormStartPosition.CenterScreen;
             this.Text = "Steam Desktop Authenticator";
             this.ResumeLayout(false);
 
@@ -100,9 +97,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnImportConfig;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnJustStart;
+        private Wisej.Web.Label label1;
+        private Wisej.Web.Button btnImportConfig;
+        private Wisej.Web.Label label2;
+        private Wisej.Web.Button btnJustStart;
     }
 }

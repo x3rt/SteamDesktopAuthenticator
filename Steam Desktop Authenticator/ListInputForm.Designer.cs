@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListInputForm));
-            this.lbItems = new System.Windows.Forms.ListBox();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.lbItems = new Wisej.Web.ListBox();
+            this.btnAccept = new Wisej.Web.Button();
+            this.btnCancel = new Wisej.Web.Button();
             this.SuspendLayout();
             // 
             // lbItems
@@ -49,7 +49,6 @@
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 1;
             this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnCancel
@@ -59,21 +58,20 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ListInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 172);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lbItems);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            
             this.Name = "ListInputForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = Wisej.Web.FormStartPosition.CenterParent;
             this.Text = "Select one";
             this.Load += new System.EventHandler(this.ListInputForm_Load);
             this.ResumeLayout(false);
@@ -82,8 +80,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbItems;
-        private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Button btnCancel;
+        private Wisej.Web.ListBox lbItems;
+        private Wisej.Web.Button btnAccept;
+        private Wisej.Web.Button btnCancel;
     }
 }

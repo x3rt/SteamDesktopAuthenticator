@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Wisej.Web;
 using SteamAuth;
 using System.Drawing.Drawing2D;
 
@@ -102,8 +102,6 @@ namespace Steam_Desktop_Authenticator
                     {
                         Text = confirmation.Accept,
                         Location = new Point(90, 50),
-                        FlatStyle = FlatStyle.Flat,
-                        FlatAppearance = { BorderSize = 0 },
                         BackColor = Color.Black,
                         ForeColor = Color.Snow,
                         Confirmation = confirmation
@@ -115,8 +113,6 @@ namespace Steam_Desktop_Authenticator
                     {
                         Text = confirmation.Cancel,
                         Location = new Point(180, 50),
-                        FlatStyle = FlatStyle.Flat,
-                        FlatAppearance = { BorderSize = 0 },
                         BackColor = Color.Black,
                         ForeColor = Color.Snow,
                         Confirmation = confirmation

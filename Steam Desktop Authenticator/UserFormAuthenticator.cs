@@ -1,7 +1,7 @@
 ﻿using SteamAuth;
 using SteamKit2.Authentication;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Wisej.Web;
 
 namespace Steam_Desktop_Authenticator
 {

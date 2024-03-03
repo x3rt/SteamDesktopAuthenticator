@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.chkPeriodicChecking = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.numPeriodicInterval = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkCheckAll = new System.Windows.Forms.CheckBox();
-            this.chkConfirmMarket = new System.Windows.Forms.CheckBox();
-            this.chkConfirmTrades = new System.Windows.Forms.CheckBox();
+            this.chkPeriodicChecking = new Wisej.Web.CheckBox();
+            this.btnSave = new Wisej.Web.Button();
+            this.numPeriodicInterval = new Wisej.Web.NumericUpDown();
+            this.label1 = new Wisej.Web.Label();
+            this.chkCheckAll = new Wisej.Web.CheckBox();
+            this.chkConfirmMarket = new Wisej.Web.CheckBox();
+            this.chkConfirmTrades = new Wisej.Web.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPeriodicInterval)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,20 +47,18 @@
             this.chkPeriodicChecking.Size = new System.Drawing.Size(233, 30);
             this.chkPeriodicChecking.TabIndex = 0;
             this.chkPeriodicChecking.Text = "Periodically check for new confirmations\r\nand show a popup when they arrive";
-            this.chkPeriodicChecking.UseVisualStyleBackColor = true;
             this.chkPeriodicChecking.CheckedChanged += new System.EventHandler(this.chkPeriodicChecking_CheckedChanged);
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Anchor = ((Wisej.Web.AnchorStyles)(((Wisej.Web.AnchorStyles.Bottom | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(12, 152);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(224, 38);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // numPeriodicInterval
@@ -97,7 +95,6 @@
             this.chkCheckAll.Size = new System.Drawing.Size(213, 17);
             this.chkCheckAll.TabIndex = 4;
             this.chkCheckAll.Text = "Check all accounts for confirmations";
-            this.chkCheckAll.UseVisualStyleBackColor = true;
             // 
             // chkConfirmMarket
             // 
@@ -107,7 +104,6 @@
             this.chkConfirmMarket.Size = new System.Drawing.Size(198, 17);
             this.chkConfirmMarket.TabIndex = 5;
             this.chkConfirmMarket.Text = "Auto-confirm market transactions";
-            this.chkConfirmMarket.UseVisualStyleBackColor = true;
             this.chkConfirmMarket.CheckedChanged += new System.EventHandler(this.chkConfirmMarket_CheckedChanged);
             // 
             // chkConfirmTrades
@@ -118,13 +114,12 @@
             this.chkConfirmTrades.Size = new System.Drawing.Size(129, 17);
             this.chkConfirmTrades.TabIndex = 6;
             this.chkConfirmTrades.Text = "Auto-confirm trades";
-            this.chkConfirmTrades.UseVisualStyleBackColor = true;
             this.chkConfirmTrades.CheckedChanged += new System.EventHandler(this.chkConfirmTrades_CheckedChanged);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(244, 202);
             this.Controls.Add(this.chkConfirmTrades);
             this.Controls.Add(this.chkConfirmMarket);
@@ -134,11 +129,11 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.chkPeriodicChecking);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = Wisej.Web.FormBorderStyle.Fixed;
+            
             this.MaximizeBox = false;
             this.Name = "SettingsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = Wisej.Web.FormStartPosition.CenterParent;
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.numPeriodicInterval)).EndInit();
             this.ResumeLayout(false);
@@ -148,12 +143,12 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkPeriodicChecking;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.NumericUpDown numPeriodicInterval;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkCheckAll;
-        private System.Windows.Forms.CheckBox chkConfirmMarket;
-        private System.Windows.Forms.CheckBox chkConfirmTrades;
+        private Wisej.Web.CheckBox chkPeriodicChecking;
+        private Wisej.Web.Button btnSave;
+        private Wisej.Web.NumericUpDown numPeriodicInterval;
+        private Wisej.Web.Label label1;
+        private Wisej.Web.CheckBox chkCheckAll;
+        private Wisej.Web.CheckBox chkConfirmMarket;
+        private Wisej.Web.CheckBox chkConfirmTrades;
     }
 }

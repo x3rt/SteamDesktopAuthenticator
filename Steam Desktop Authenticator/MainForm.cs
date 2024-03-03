@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Windows.Forms;
+using Wisej.Web;
 using SteamAuth;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -102,7 +102,7 @@ namespace Steam_Desktop_Authenticator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            trayIcon.Icon = this.Icon;
+            //trayIcon.Icon = this.Icon;
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -358,41 +358,6 @@ namespace Steam_Desktop_Authenticator
             }
         }
 
-        // Tray menu handlers
-        private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            trayRestore_Click(sender, EventArgs.Empty);
-        }
-
-        private void trayRestore_Click(object sender, EventArgs e)
-        {
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-        }
-
-        private void trayQuit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void trayTradeConfirmations_Click(object sender, EventArgs e)
-        {
-            btnTradeConfirmations_Click(sender, e);
-        }
-
-        private void trayCopySteamGuard_Click(object sender, EventArgs e)
-        {
-            if (txtLoginToken.Text != "")
-            {
-                Clipboard.SetText(txtLoginToken.Text);
-            }
-        }
-
-        private void trayAccountList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listAccounts.SelectedIndex = trayAccountList.SelectedIndex;
-        }
-
         // Misc UI handlers
         private void listAccounts_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -405,7 +370,6 @@ namespace Steam_Desktop_Authenticator
                 SteamGuardAccount account = allAccounts[i];
                 if (account.AccountName == (string)listAccounts.Items[listAccounts.SelectedIndex])
                 {
-                    trayAccountList.Text = account.AccountName;
                     currentAccount = account;
                     loadAccountInfo();
                     break;
@@ -420,9 +384,6 @@ namespace Steam_Desktop_Authenticator
 
             listAccounts.Items.Clear();
             listAccounts.Items.AddRange(names.ToArray());
-
-            trayAccountList.Items.Clear();
-            trayAccountList.Items.AddRange(names.ToArray());
         }
 
         // Timers
@@ -587,9 +548,6 @@ namespace Steam_Desktop_Authenticator
             listAccounts.Items.Clear();
             listAccounts.SelectedIndex = -1;
 
-            trayAccountList.Items.Clear();
-            trayAccountList.SelectedIndex = -1;
-
             allAccounts = manifest.GetAllAccounts(passKey);
 
             if (allAccounts.Length > 0)
@@ -598,14 +556,11 @@ namespace Steam_Desktop_Authenticator
                 {
                     SteamGuardAccount account = allAccounts[i];
                     listAccounts.Items.Add(account.AccountName);
-                    trayAccountList.Items.Add(account.AccountName);
                 }
 
                 listAccounts.SelectedIndex = 0;
-                trayAccountList.SelectedIndex = 0;
 
                 listAccounts.Sorted = true;
-                trayAccountList.Sorted = true;
             }
 
             menuDeactivateAuthenticator.Enabled = btnTradeConfirmations.Enabled = allAccounts.Length > 0;

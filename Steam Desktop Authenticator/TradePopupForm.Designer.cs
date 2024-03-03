@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TradePopupForm));
-            this.lblDesc = new System.Windows.Forms.Label();
-            this.btnDeny = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblAccount = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.lblDesc = new Wisej.Web.Label();
+            this.btnDeny = new Wisej.Web.Button();
+            this.btnAccept = new Wisej.Web.Button();
+            this.lblStatus = new Wisej.Web.Label();
+            this.lblAccount = new Wisej.Web.Label();
+            this.toolTip1 = new Wisej.Web.ToolTip();
             this.SuspendLayout();
             // 
             // lblDesc
@@ -56,7 +56,6 @@
             this.btnDeny.Size = new System.Drawing.Size(69, 32);
             this.btnDeny.TabIndex = 2;
             this.btnDeny.Text = "Deny";
-            this.btnDeny.UseVisualStyleBackColor = false;
             this.btnDeny.Click += new System.EventHandler(this.btnDeny_Click);
             // 
             // btnAccept
@@ -68,7 +67,6 @@
             this.btnAccept.Size = new System.Drawing.Size(67, 32);
             this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // lblStatus
@@ -95,13 +93,11 @@
             //
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 50;
-            this.toolTip1.ReshowDelay = 100;
-            this.toolTip1.ShowAlways = true;
             // 
             // TradePopupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(166, 131);
             this.Controls.Add(this.lblAccount);
             this.Controls.Add(this.lblStatus);
@@ -109,8 +105,8 @@
             this.Controls.Add(this.btnDeny);
             this.Controls.Add(this.lblDesc);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = Wisej.Web.FormBorderStyle.FixedToolWindow;
+            
             this.Name = "TradePopupForm";
             this.Text = "New confirmation";
             this.TopMost = true;
@@ -120,11 +116,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblDesc;
-        private System.Windows.Forms.Button btnDeny;
-        private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblAccount;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private Wisej.Web.Label lblDesc;
+        private Wisej.Web.Button btnDeny;
+        private Wisej.Web.Button btnAccept;
+        private Wisej.Web.Label lblStatus;
+        private Wisej.Web.Label lblAccount;
+        private Wisej.Web.ToolTip toolTip1;
     }
 }

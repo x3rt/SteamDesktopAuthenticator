@@ -11,16 +11,15 @@ namespace Steam_Desktop_Authenticator
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportAccountForm));
-            this.labelText = new System.Windows.Forms.Label();
-            this.txtBox = new System.Windows.Forms.TextBox();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelText = new Wisej.Web.Label();
+            this.txtBox = new Wisej.Web.TextBox();
+            this.btnImport = new Wisej.Web.Button();
+            this.btnCancel = new Wisej.Web.Button();
+            this.label1 = new Wisej.Web.Label();
             this.SuspendLayout();
             // 
             // labelText
             // 
-            this.labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelText.Location = new System.Drawing.Point(15, 14);
@@ -44,23 +43,20 @@ namespace Steam_Desktop_Authenticator
             this.btnImport.Size = new System.Drawing.Size(187, 28);
             this.btnImport.TabIndex = 3;
             this.btnImport.Text = "Select .maFile file to Import";
-            this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.DialogResult = Wisej.Web.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(41, 131);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 28);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label1
             // 
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(15, 83);
@@ -73,7 +69,7 @@ namespace Steam_Desktop_Authenticator
             // 
             this.AcceptButton = this.btnImport;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(336, 171);
             this.Controls.Add(this.label1);
@@ -82,14 +78,14 @@ namespace Steam_Desktop_Authenticator
             this.Controls.Add(this.txtBox);
             this.Controls.Add(this.labelText);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = Wisej.Web.FormBorderStyle.Fixed;
+            
             this.MaximizeBox = false;
             this.Name = "ImportAccountForm";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = Wisej.Web.FormStartPosition.CenterParent;
             this.Text = "Import Account";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Import_maFile_Form_FormClosing);
+            this.FormClosing += new Wisej.Web.FormClosingEventHandler(this.Import_maFile_Form_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,10 +93,10 @@ namespace Steam_Desktop_Authenticator
 
         #endregion
 
-        private System.Windows.Forms.Label labelText;
-        private System.Windows.Forms.TextBox txtBox;
-        private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label1;
+        private Wisej.Web.Label labelText;
+        private Wisej.Web.TextBox txtBox;
+        private Wisej.Web.Button btnImport;
+        private Wisej.Web.Button btnCancel;
+        private Wisej.Web.Label label1;
     }
 }

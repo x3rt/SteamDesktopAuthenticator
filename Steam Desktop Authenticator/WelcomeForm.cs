@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Wisej.Web;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -86,7 +86,7 @@ namespace Steam_Desktop_Authenticator
                     // Manifest file was corrupted, generate a new one.
                     try
                     {
-                        MessageBox.Show("Your settings were unexpectedly corrupted and were reset to defaults.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Your settings were unexpectedly corrupted and were reset to defaults.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         man = Manifest.GenerateNewManifest(true);
                     }
                     catch (MaFileEncryptedException)

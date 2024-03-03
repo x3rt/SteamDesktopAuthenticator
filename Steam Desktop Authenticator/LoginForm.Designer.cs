@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSteamLogin = new System.Windows.Forms.Button();
-            this.labelLoginExplanation = new System.Windows.Forms.Label();
+            this.label1 = new Wisej.Web.Label();
+            this.txtUsername = new Wisej.Web.TextBox();
+            this.txtPassword = new Wisej.Web.TextBox();
+            this.label2 = new Wisej.Web.Label();
+            this.btnSteamLogin = new Wisej.Web.Button();
+            this.labelLoginExplanation = new Wisej.Web.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +84,6 @@
             this.btnSteamLogin.Size = new System.Drawing.Size(110, 33);
             this.btnSteamLogin.TabIndex = 4;
             this.btnSteamLogin.Text = "Login";
-            this.btnSteamLogin.UseVisualStyleBackColor = true;
             this.btnSteamLogin.Click += new System.EventHandler(this.btnSteamLogin_Click);
             // 
             // labelLoginExplanation
@@ -101,7 +100,7 @@
             // 
             this.AcceptButton = this.btnSteamLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 193);
             this.Controls.Add(this.labelLoginExplanation);
             this.Controls.Add(this.btnSteamLogin);
@@ -110,13 +109,11 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.FormBorderStyle = Wisej.Web.FormBorderStyle.Fixed;
+            this.ImeMode = Wisej.Web.ImeMode.Active;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = Wisej.Web.FormStartPosition.CenterScreen;
             this.Text = "Steam Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
@@ -126,11 +123,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSteamLogin;
-        private System.Windows.Forms.Label labelLoginExplanation;
+        private Wisej.Web.Label label1;
+        private Wisej.Web.TextBox txtUsername;
+        private Wisej.Web.TextBox txtPassword;
+        private Wisej.Web.Label label2;
+        private Wisej.Web.Button btnSteamLogin;
+        private Wisej.Web.Label labelLoginExplanation;
     }
 }

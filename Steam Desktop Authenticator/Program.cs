@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+using Wisej.Web;
 using System.Diagnostics;
 using CommandLine;
 
@@ -48,9 +48,6 @@ namespace Steam_Desktop_Authenticator
             var options = new CommandLineOptions();
             Parser.Default.ParseArguments(args, options);
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             Manifest man;
 
             try
@@ -62,7 +59,7 @@ namespace Steam_Desktop_Authenticator
                 // Manifest file was corrupted, generate a new one.
                 try
                 {
-                    MessageBox.Show("Your settings were unexpectedly corrupted and were reset to defaults.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Your settings were unexpectedly corrupted and were reset to defaults.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     man = Manifest.GenerateNewManifest(true);
                 }
                 catch (MaFileEncryptedException)
@@ -82,12 +79,12 @@ namespace Steam_Desktop_Authenticator
                     MainForm mf = new MainForm();
                     mf.SetEncryptionKey(options.EncryptionKey);
                     mf.StartSilent(options.Silent);
-                    Application.Run(mf);
+                    mf.Show();
                 }
                 else
                 {
                     // No accounts, run welcome form
-                    Application.Run(new WelcomeForm());
+                    new WelcomeForm().Show();
                 }
             }
             else
@@ -95,7 +92,7 @@ namespace Steam_Desktop_Authenticator
                 MainForm mf = new MainForm();
                 mf.SetEncryptionKey(options.EncryptionKey);
                 mf.StartSilent(options.Silent);
-                Application.Run(mf);
+                mf.Show();
             }
         }
     }
